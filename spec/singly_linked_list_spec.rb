@@ -124,4 +124,45 @@ RSpec.describe 'Singlely Linked List' do
       expect(subject.to_string).to eq("first --> second --> third --> fourth")
     end
   end
+
+  context '#delete' do
+    context "when there are 4 nodes in the list" do
+      subject {  SinglyLinkedList.new("first") }
+      before do
+        subject.add_last("second")
+        subject.add_last("third")
+        subject.add_last("fourth")
+        subject.delete("third")
+      end
+
+      it 'deletes the element passed as paramter' do
+        expect(subject.to_string).to eq("first --> second --> fourth")
+      end
+    end
+
+    context "when there is 1 node in the list" do
+      subject {  SinglyLinkedList.new("first") }
+      before { subject.delete("first") }
+
+      it 'deletes the element passed as paramter' do
+        expect(subject.to_string).to eq("")
+      end
+
+      it 'sets the list size to 0' do
+        expect(subject.size).to eq(0)
+      end
+    end
+
+    context "when the list is empty" do
+      subject {  SinglyLinkedList.new("first") }
+      before do
+        subject.delete("first")
+        subject.delete("not_existent")
+      end
+
+      it 'keeps the list size to 0' do
+        expect(subject.size).to eq(0)
+      end
+    end
+  end
 end

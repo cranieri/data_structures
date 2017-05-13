@@ -52,6 +52,21 @@ class SinglyLinkedList
     @tail
   end
 
+  def delete(element)
+    current = head
+
+    return remove_first if (current && current.element == element)
+
+    (0..size - 2).each do
+      if (current.next_node.element == element)
+        current.next_node = current.next_node.next_node
+        @size -= 1
+        return element
+      end
+      current = current.next_node
+    end
+  end
+
   def remove_first
     return nil if is_empty
 
