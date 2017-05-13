@@ -30,17 +30,11 @@ class SinglyLinkedList
   end
 
   def add_first(element)
-    new_node = Node.new(element, @head)
-    @head = new_node
+    @head = Node.new(element, @head)
 
-    if is_empty
-      @tail = head
-    elsif (@size == 1)
-      @tail = new_node.next_node
-    end
-
+    @tail = head if is_empty
     @size += 1
-    new_node
+    @head
   end
 
   def add_last(element)
