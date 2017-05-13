@@ -49,7 +49,7 @@ class SinglyLinkedList
     end
 
     @size += 1
-    new_node
+    @tail
   end
 
   def remove_first
@@ -59,7 +59,7 @@ class SinglyLinkedList
     @head = head.next_node
     @size -= 1
 
-    @tail = nil if (@size == 0)
+    @tail = nil if is_empty
     to_remove
   end
 
