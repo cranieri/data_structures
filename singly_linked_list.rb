@@ -41,12 +41,12 @@ class SinglyLinkedList
     new_node = Node.new(element, nil)
 
     if is_empty
-      @tail = new_node
-      @head = @tail
+      @head = new_node
     else
       @tail.next_node = new_node
-      @tail = new_node
     end
+
+    @tail = new_node
 
     @size += 1
     @tail
